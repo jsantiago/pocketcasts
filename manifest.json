@@ -1,0 +1,42 @@
+{
+    "manifest_version": 2,
+    "name": "Pocket Casts",
+    "description": "Pocket Casts Web Player",
+    "version": "0.1.0",
+    "icons": {
+        "128": "128.png"
+    },
+    "app": {
+        "background": {
+            "scripts": [
+                "background.js"
+            ]
+        }
+    },
+    "commands": {
+        "prev": {
+            "suggested_key": {
+                "default": "MediaPrevTrack"
+            },
+            "description": "Back",
+            "global": true
+        },
+        "play-pause": {
+            "suggested_key": {
+                "default": "MediaPlayPause"
+            },
+            "description": "Play/Pause",
+            "global": true
+        },
+        "next": {
+            "suggested_key": {
+                "default": "MediaNextTrack"
+            },
+            "description": "Forward",
+            "global": true
+        }
+    },
+    "permissions": [
+        "webview"
+    ]
+}

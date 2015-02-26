@@ -1,0 +1,7 @@
+#header {
+    cursor: -webkit-grab;
+}
+
+#header:active {
+    cursor: -webkit-grabbing;
+}
