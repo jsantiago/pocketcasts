@@ -12,11 +12,32 @@ chrome.app.window.current().onBoundsChanged.addListener(handleResize);
 handleResize();
 
 // Get webview
-var player = document.getElementById("player");
+var player = document.querySelector('webview');
 player.addEventListener('loadstop', function(){
     // Add custom style
     player.insertCSS({
         file: "player.css"
+    });
+});
+
+// Listen for clicked links
+player.addEventListener('newwindow', function(e){
+    var targetUrl = e.targetUrl;
+    chrome.app.window.create('index.html', {
+        hidden: true,
+        bounds: {
+            height: 750,
+            width: 1100
+        }
+    }, function(appWin){
+        appWin.contentWindow.addEventListener('DOMContentLoaded', function(e){
+            // Set the source of the <webview>
+            var webview = appWin.contentWindow.document.querySelector('webview');
+            webview.src = targetUrl;
+
+            // Show the window
+            appWin.show();
+        });
     });
 });
 
